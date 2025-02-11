@@ -1,0 +1,26 @@
+# Use an official Python runtime as the base image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirement.txt .
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirement.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose port 5000 for the Flask app
+EXPOSE 5000
+
+# Set environment variables for the database connection
+ENV DB_HOST=terraform-20250210133316976400000001.cw34ekqygfuu.us-east-1.rds.amazonaws.com
+ENV DB_USER=admin
+ENV DB_PASSWORD=password
+ENV DB_NAME=mydb
+
+# Run the application
+CMD ["python", "app.py"]
