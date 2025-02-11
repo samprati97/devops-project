@@ -21,3 +21,4 @@ resource "aws_db_instance" "mysql" {
   parameter_group_name = "default.mysql8.0"
   skip_final_snapshot  = true
 }
+
